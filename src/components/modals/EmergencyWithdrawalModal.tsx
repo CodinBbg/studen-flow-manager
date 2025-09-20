@@ -33,7 +33,7 @@ export function EmergencyWithdrawalModal({ open, onOpenChange }: EmergencyWithdr
 
     toast({
       title: "Emergency Withdrawal Requested",
-      description: `Kshs. ${amount} withdrawal request has been submitted for review.`,
+      description: `$${amount} withdrawal request has been submitted for review.`,
     });
 
     setAmount("");
@@ -60,14 +60,14 @@ export function EmergencyWithdrawalModal({ open, onOpenChange }: EmergencyWithdr
           <div className="space-y-2">
             <Label htmlFor="amount">Withdrawal Amount</Label>
             <div className="relative">
-              <span className="absolute left-3 top-3 text-sm text-muted-foreground">Kshs.</span>
+              <DollarSign className="absolute left-3 top-3 h-4 w-4 text-muted-foreground" />
               <Input
                 id="amount"
                 type="number"
                 placeholder="0.00"
                 value={amount}
                 onChange={(e) => setAmount(e.target.value)}
-                className="pl-12"
+                className="pl-9"
                 required
               />
             </div>

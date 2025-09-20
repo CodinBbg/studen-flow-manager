@@ -11,6 +11,7 @@ import { EmergencyWithdrawalModal } from "@/components/modals/EmergencyWithdrawa
 import Dashboard from "./pages/Dashboard";
 import TransferHistory from "./pages/TransferHistory";
 import FundAllocation from "./pages/FundAllocation";
+import Transactions from "./pages/Transactions";
 import Settings from "./pages/Settings";
 import Help from "./pages/Help";
 import NotFound from "./pages/NotFound";
@@ -38,6 +39,7 @@ const App = () => {
                     <Route path="/" element={<Dashboard />} />
                     <Route path="/history" element={<TransferHistory />} />
                     <Route path="/allocation" element={<FundAllocation />} />
+                    <Route path="/transactions" element={<Transactions />} />
                     <Route path="/settings" element={<Settings />} />
                     <Route path="/help" element={<Help />} />
                     <Route path="*" element={<NotFound />} />

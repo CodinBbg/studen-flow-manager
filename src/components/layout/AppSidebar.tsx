@@ -6,7 +6,8 @@ import {
   Settings, 
   HelpCircle,
   AlertTriangle,
-  DollarSign
+  DollarSign,
+  CreditCard
 } from "lucide-react";
 import { NavLink, useLocation } from "react-router-dom";
 import {
@@ -26,6 +27,7 @@ const mainItems = [
   { title: "Dashboard", url: "/", icon: LayoutDashboard },
   { title: "Transfer History", url: "/history", icon: History },
   { title: "Fund Allocation", url: "/allocation", icon: PiggyBank },
+  { title: "Transactions", url: "/transactions", icon: CreditCard },
 ];
 
 const otherItems = [
@@ -46,7 +48,7 @@ export function AppSidebar({ onEmergencyWithdraw }: AppSidebarProps) {
   const isActive = (path: string) => currentPath === path;
   const getNavCls = ({ isActive }: { isActive: boolean }) =>
     isActive 
-      ? "bg-primary-light text-primary font-medium border-r-2 border-primary" 
+      ? "bg-primary-light text-primary font-medium border-r-2 border-primary underline underline-offset-4 decoration-2" 
       : "hover:bg-accent text-muted-foreground hover:text-foreground";
 
   return (
