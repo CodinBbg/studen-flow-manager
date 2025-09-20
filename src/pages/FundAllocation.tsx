@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -18,7 +18,19 @@ import { useToast } from "@/hooks/use-toast";
 
 const FundAllocation = () => {
   const { toast } = useToast();
-  const [totalFunds] = useState(15000);
+
+  // Read total funds from localStorage (set by Dashboard)
+  const getInitialFunds = () => {
+    const stored = localStorage.getItem("totalFunds");
+    return stored ? Number(stored) : 15000;
+  };
+  const [totalFunds, setTotalFunds] = useState(getInitialFunds());
+  useEffect(() => {
+    const handleStorage = () => setTotalFunds(getInitialFunds());
+    window.addEventListener("storage", handleStorage);
+    return () => window.removeEventListener("storage", handleStorage);
+  }, []);
+
   const [allocations, setAllocations] = useState([
     { id: 1, category: "Housing", budgeted: 6000, spent: 800, color: "bg-blue-500" },
     { id: 2, category: "Food & Meals", budgeted: 3000, spent: 1200, color: "bg-green-500" },
@@ -209,14 +221,14 @@ const FundAllocation = () => {
               <div className="space-y-2">
                 <Label htmlFor="category-amount">Budget Amount</Label>
                 <div className="relative">
-                  <DollarSign className="absolute left-3 top-3 h-4 w-4 text-muted-foreground" />
+                  <span className="absolute left-3 top-3 text-sm text-muted-foreground">Kshs.</span>
                   <Input
                     id="category-amount"
                     type="number"
                     placeholder="0.00"
                     value={newCategory.amount}
                     onChange={(e) => setNewCategory({ ...newCategory, amount: e.target.value })}
-                    className="pl-9"
+                    className="pl-12"
                   />
                 </div>
               </div>

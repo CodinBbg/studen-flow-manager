@@ -33,7 +33,7 @@ export function EmergencyWithdrawalModal({ open, onOpenChange }: EmergencyWithdr
 
     toast({
       title: "Emergency Withdrawal Requested",
-      description: `$${amount} withdrawal request has been submitted for review.`,
+      description: `Kshs. ${amount} withdrawal request has been submitted for review.`,
     });
 
     setAmount("");
@@ -52,7 +52,7 @@ export function EmergencyWithdrawalModal({ open, onOpenChange }: EmergencyWithdr
           </DialogTitle>
           <DialogDescription>
             Emergency withdrawals bypass the 25% monthly limit but require justification. 
-            This action will be reviewed and may affect future loan eligibility.
+            These requests are subject to review and approval.
           </DialogDescription>
         </DialogHeader>
 
@@ -60,14 +60,14 @@ export function EmergencyWithdrawalModal({ open, onOpenChange }: EmergencyWithdr
           <div className="space-y-2">
             <Label htmlFor="amount">Withdrawal Amount</Label>
             <div className="relative">
-              <DollarSign className="absolute left-3 top-3 h-4 w-4 text-muted-foreground" />
+              <span className="absolute left-3 top-3 text-sm text-muted-foreground">Kshs.</span>
               <Input
                 id="amount"
                 type="number"
                 placeholder="0.00"
                 value={amount}
                 onChange={(e) => setAmount(e.target.value)}
-                className="pl-9"
+                className="pl-12"
                 required
               />
             </div>
@@ -86,8 +86,8 @@ export function EmergencyWithdrawalModal({ open, onOpenChange }: EmergencyWithdr
           </div>
 
           <div className="bg-warning-light border border-warning rounded-lg p-4">
-            <p className="text-sm text-warning-foreground font-medium">Warning</p>
-            <p className="text-sm text-warning-foreground">
+            <p className="text-sm text-black font-bold">Warning</p>
+            <p className="text-sm text-black">
               Emergency withdrawals are monitored and excessive use may result in loan restrictions.
             </p>
           </div>
