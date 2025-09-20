@@ -47,8 +47,8 @@ export function AppSidebar({ onEmergencyWithdraw }: AppSidebarProps) {
   const isCollapsed = state === "collapsed";
   const isActive = (path: string) => currentPath === path;
   const getNavCls = ({ isActive }: { isActive: boolean }) =>
-    isActive 
-      ? "bg-primary-light text-primary font-medium border-r-2 border-primary underline underline-offset-4 decoration-2" 
+    isActive
+      ? "bg-primary-light text-primary font-medium border-b-2 border-primary"
       : "hover:bg-accent text-muted-foreground hover:text-foreground";
 
   return (
