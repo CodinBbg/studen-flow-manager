@@ -15,7 +15,7 @@ import {
   TrendingUp
 } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
-
+//main fxn
 const FundAllocation = () => {
   const { toast } = useToast();
 
