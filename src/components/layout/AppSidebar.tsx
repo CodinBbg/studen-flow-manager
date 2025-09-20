@@ -48,7 +48,7 @@ export function AppSidebar({ onEmergencyWithdraw }: AppSidebarProps) {
   const isActive = (path: string) => currentPath === path;
   const getNavCls = ({ isActive }: { isActive: boolean }) =>
     isActive
-      ? "bg-primary-light text-primary font-medium border-b-2 border-primary"
+      ? "bg-primary/10 text-primary font-medium border-b-2 border-solid border-primary"
       : "hover:bg-accent text-muted-foreground hover:text-foreground";
 
   return (
@@ -76,7 +76,11 @@ export function AppSidebar({ onEmergencyWithdraw }: AppSidebarProps) {
               {mainItems.map((item) => (
                 <SidebarMenuItem key={item.title}>
                   <SidebarMenuButton asChild>
-                    <NavLink to={item.url} end className={getNavCls}>
+                    <NavLink
+                      to={item.url}
+                      end
+                      className={({ isActive }) => getNavCls({ isActive })}
+                    >
                       <item.icon className="w-4 h-4" />
                       {!isCollapsed && <span>{item.title}</span>}
                     </NavLink>
@@ -89,8 +93,8 @@ export function AppSidebar({ onEmergencyWithdraw }: AppSidebarProps) {
 
         {/* Emergency Withdrawal Button */}
         <div className="px-4 py-2">
-          <Button 
-            variant="destructive" 
+          <Button
+            variant="destructive"
             size={isCollapsed ? "icon" : "default"}
             className="w-full"
             onClick={onEmergencyWithdraw}
@@ -107,7 +111,10 @@ export function AppSidebar({ onEmergencyWithdraw }: AppSidebarProps) {
               {otherItems.map((item) => (
                 <SidebarMenuItem key={item.title}>
                   <SidebarMenuButton asChild>
-                    <NavLink to={item.url} className={getNavCls}>
+                    <NavLink
+                      to={item.url}
+                      className={({ isActive }) => getNavCls({ isActive })}
+                    >
                       <item.icon className="w-4 h-4" />
                       {!isCollapsed && <span>{item.title}</span>}
                     </NavLink>
